@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    @apply antialiased;
+    color-scheme: light dark;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  *::selection {
+    @apply bg-blue-500 text-white;
+  }
+
+  body {
+    @apply bg-white dark:bg-zinc-950;
+  }
+}
