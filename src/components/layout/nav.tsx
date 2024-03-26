@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { login } from '~/actions';
 import { Logo } from '../common/logo';
+import { GoogleIcon } from '../icons/google';
 import { UserMenu } from './user-menu';
 
 interface Props {
@@ -60,10 +61,11 @@ export function Nav({ user, session }: Props) {
         {(!user || !session) && (
           <button
             type='button'
-            className='ml-auto'
+            className='flex items-center gap-x-2 ml-auto px-3 py-2 bg-zinc-50 dark:bg-zinc-900 font-semibold text-zinc-700 dark:text-zinc-200 border border-zinc-100 dark:border-zinc-800 rounded-full'
             onClick={() => login(location.href)}
           >
-            로그인
+            <GoogleIcon className='w-5 h-5' />
+            <span className='flex-shrink-0'>로그인</span>
           </button>
         )}
         {user && session && <UserMenu user={user} session={session} />}
