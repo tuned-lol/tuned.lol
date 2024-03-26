@@ -1,6 +1,6 @@
 'use client';
 
-import type { User } from 'lucia';
+import type { Session, User } from 'lucia';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { login } from '~/actions';
@@ -9,6 +9,7 @@ import { UserMenu } from './user-menu';
 
 interface Props {
   user: User | null;
+  session: Session | null;
 }
 
 const items: { href: string; label: string }[] = [
@@ -17,7 +18,7 @@ const items: { href: string; label: string }[] = [
   { href: '/library', label: '보관함' },
 ];
 
-export function Nav({ user }: Props) {
+export function Nav({ user, session }: Props) {
   const pathname = usePathname();
 
   return (
@@ -56,7 +57,7 @@ export function Nav({ user }: Props) {
             </li>
           ))}
         </ul>
-        {!user && (
+        {(!user || !session) && (
           <button
             type='button'
             className='ml-auto'
@@ -65,7 +66,7 @@ export function Nav({ user }: Props) {
             로그인
           </button>
         )}
-        {user && <UserMenu user={user} />}
+        {user && session && <UserMenu user={user} session={session} />}
       </div>
     </nav>
   );

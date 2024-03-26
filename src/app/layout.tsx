@@ -13,12 +13,12 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: PropsWithChildren) {
-  const { user } = await getSession();
+  const { user, session } = await getSession();
 
   return (
     <html lang='ko'>
       <body>
-        <Nav user={user} />
+        <Nav user={user} session={session} />
         {children}
       </body>
     </html>

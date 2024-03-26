@@ -1,13 +1,15 @@
 import { Menu, Transition } from '@headlessui/react';
-import type { User } from 'lucia';
+import type { Session, User } from 'lucia';
 import Link from 'next/link';
 import { Fragment } from 'react';
+import { logout } from '~/actions';
 
 interface Props {
   user: User;
+  session: Session;
 }
 
-export function UserMenu({ user }: Props) {
+export function UserMenu({ user, session }: Props) {
   return (
     <Menu as='div' className='relative ml-auto'>
       <Menu.Button type='button'>
@@ -65,16 +67,17 @@ export function UserMenu({ user }: Props) {
           <div className='p-1'>
             <Menu.Item>
               {({ active }) => (
-                <Link
-                  href='/'
+                <button
+                  type='button'
                   className={`${
                     active
                       ? 'bg-zinc-50 dark:bg-zinc-900 border-zinc-100 dark:border-zinc-800'
                       : 'border-transparent'
                   } flex items-center w-full px-2.5 py-2 font-medium text-zinc-800 dark:text-zinc-100 text-sm border rounded-[10px]`}
+                  onClick={() => logout(session)}
                 >
                   로그아웃
-                </Link>
+                </button>
               )}
             </Menu.Item>
           </div>
