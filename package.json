@@ -8,6 +8,7 @@
     "check": "biome check ."
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.18",
     "@libsql/client": "^0.5.6",
     "@lucia-auth/adapter-drizzle": "^1.0.7",
     "arctic": "^1.2.1",
