@@ -13,9 +13,10 @@ interface Props {
   session: Session | null;
 }
 
-const items: { href: string; label: string }[] = [
+const items: { href: string; label: string; protected?: boolean }[] = [
   { href: '/', label: '탐색' },
   { href: '/radio', label: '라디오' },
+  { href: '/editor', label: '만들기', protected: true },
   { href: '/library', label: '보관함' },
 ];
 
@@ -32,31 +33,33 @@ export function Nav({ user, session }: Props) {
           </h1>
         </Link>
         <ul className='flex h-full ml-10'>
-          {items.map((item) => (
-            <li
-              className='relative h-full group'
-              data-selected={
-                (
-                  item.href !== '/'
-                    ? pathname.startsWith(item.href)
-                    : pathname === item.href
-                )
-                  ? true
-                  : null
-              }
-              key={item.href}
-            >
-              <Link
-                className='flex items-center h-full px-5 font-medium group-data-[selected]:font-semibold text-zinc-600 group-data-[selected]:text-black dark:text-zinc-300 dark:group-data-[selected]:text-white hover:opacity-80'
-                href={item.href}
+          {items
+            .filter((i) => (user && session) || !i.protected)
+            .map((item) => (
+              <li
+                className='relative h-full group'
+                data-selected={
+                  (
+                    item.href !== '/'
+                      ? pathname.startsWith(item.href)
+                      : pathname === item.href
+                  )
+                    ? true
+                    : null
+                }
+                key={item.href}
               >
-                {item.label}
-              </Link>
-              <div className='absolute w-full px-6 -bottom-px'>
-                <div className='w-full h-0.5 bg-black dark:bg-white opacity-0 group-data-[selected]:opacity-100 rounded-t-full' />
-              </div>
-            </li>
-          ))}
+                <Link
+                  className='flex items-center h-full px-5 font-medium group-data-[selected]:font-semibold text-zinc-600 group-data-[selected]:text-black dark:text-zinc-300 dark:group-data-[selected]:text-white hover:opacity-80'
+                  href={item.href}
+                >
+                  {item.label}
+                </Link>
+                <div className='absolute w-full px-6 -bottom-px'>
+                  <div className='w-full h-0.5 bg-black dark:bg-white opacity-0 group-data-[selected]:opacity-100 rounded-t-full' />
+                </div>
+              </li>
+            ))}
         </ul>
         {(!user || !session) && (
           <button

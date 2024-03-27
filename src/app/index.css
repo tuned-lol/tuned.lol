@@ -15,6 +15,6 @@
   }
 
   body {
-    @apply bg-white dark:bg-zinc-950;
+    @apply min-h-screen bg-white dark:bg-zinc-950;
   }
 }
