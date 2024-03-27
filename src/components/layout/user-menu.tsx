@@ -3,6 +3,7 @@ import type { Session, User } from 'lucia';
 import Link from 'next/link';
 import { Fragment } from 'react';
 import { logout } from '~/actions';
+import { cn } from '~/lib/cn';
 
 interface Props {
   user: User;
@@ -12,13 +13,20 @@ interface Props {
 export function UserMenu({ user, session }: Props) {
   return (
     <Menu as='div' className='relative ml-auto'>
-      <Menu.Button type='button'>
-        <img
-          src={user.image}
-          className='w-[38px] h-[38px] border border-zinc-50 dark:border-zinc-900 rounded-full'
-          alt={user.name}
-        />
-      </Menu.Button>
+      <div className='flex items-center'>
+        <Menu.Button type='button'>
+          {({ open }) => (
+            <img
+              src={user.image}
+              className={cn(
+                'w-[38px] h-[38px] border border-zinc-50 dark:border-zinc-900 rounded-full',
+                open && 'ring-2 ring-blue-200 dark:ring-blue-800',
+              )}
+              alt={user.name}
+            />
+          )}
+        </Menu.Button>
+      </div>
       <Transition
         as={Fragment}
         enter='transition ease-out duration-300'
