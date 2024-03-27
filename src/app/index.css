@@ -11,10 +11,10 @@
   }
 
   *::selection {
-    @apply bg-blue-500 text-white;
+    @apply bg-blue-9 text-white;
   }
 
   body {
-    @apply min-h-screen bg-white dark:bg-zinc-950;
+    @apply min-h-screen bg-gray-app;
   }
 }

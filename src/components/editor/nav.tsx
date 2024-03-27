@@ -29,14 +29,14 @@ export function Nav({ user, session }: Props) {
 
   return (
     <>
-      <nav className='flex sticky top-0 h-16 px-6 bg-zinc-50 dark:bg-zinc-950 select-none'>
+      <nav className='flex sticky top-0 h-16 px-6 bg-gray-app select-none'>
         <div className='flex items-center w-full mx-auto'>
           <Link href='/'>
             <Logo className='w-7 h-7' />
           </Link>
           <input
             placeholder='제목을 입력하세요'
-            className='w-60 ml-4 px-3 py-1.5 bg-zinc-100 dark:bg-zinc-900 font-medium border border-zinc-200 dark:border-zinc-800 focus:border-blue-400 dark:focus:border-blue-600 rounded-xl focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-800 focus:outline-none'
+            className='w-60 ml-4 px-3 py-1.5 bg-gray-subtle font-medium border border-gray-4 dark:border-graydark-4 focus:border-blue-8 dark:focus:border-bluedark-8 rounded-xl focus:ring-2 focus:ring-blue-5 dark:focus:ring-bluedark-5 focus:outline-none'
           />
           <ul className='flex h-full ml-4'>
             {categories.map((item) => (
@@ -47,7 +47,7 @@ export function Nav({ user, session }: Props) {
               >
                 <button
                   type='button'
-                  className='flex items-center h-full px-5 font-medium group-data-[selected]:font-semibold text-zinc-600 group-data-[selected]:text-black dark:text-zinc-300 dark:group-data-[selected]:text-white hover:opacity-80'
+                  className='flex items-center h-full px-5 font-medium group-data-[selected]:font-semibold text-gray-11 group-data-[selected]:text-black dark:text-graydark-11 dark:group-data-[selected]:text-white hover:opacity-80'
                   onClick={() => setCategory(item.name)}
                 >
                   {item.label}
@@ -61,17 +61,17 @@ export function Nav({ user, session }: Props) {
           {(!user || !session) && (
             <button
               type='button'
-              className='flex items-center gap-x-2 ml-auto px-3 py-2 bg-zinc-100 dark:bg-zinc-900 font-semibold text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-800 rounded-full'
+              className='flex items-center gap-x-2 ml-auto px-3.5 py-2 bg-gray-subtle font-medium text-gray-12 dark:text-graydark-12 border border-gray-4 dark:border-graydark-4 rounded-full'
               onClick={() => login(location.href)}
             >
-              <GoogleIcon className='w-5 h-5' />
+              <GoogleIcon className='w-[18px] h-[18px]' />
               <span className='flex-shrink-0'>로그인</span>
             </button>
           )}
           {user && session && <UserMenu user={user} session={session} />}
         </div>
       </nav>
-      <section className='h-10 mx-2 mb-2 bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-900 rounded-xl shadow-sm'></section>
+      <section className='h-12 mx-2 mb-2 bg-gray-subtle border border-gray-4 dark:border-graydark-4 rounded-xl shadow-sm'></section>
     </>
   );
 }

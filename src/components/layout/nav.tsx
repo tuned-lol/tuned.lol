@@ -24,7 +24,7 @@ export function Nav({ user, session }: Props) {
   const pathname = usePathname();
 
   return (
-    <nav className='flex sticky top-0 h-[4.5rem] px-4 bg-white dark:bg-zinc-950 border-b border-b-zinc-100 dark:border-b-zinc-800 select-none'>
+    <nav className='flex sticky top-0 h-[4.5rem] px-4 bg-gray-app border-b border-b-gray-3 dark:border-b-graydark-3 select-none'>
       <div className='flex items-center w-full max-w-4xl mx-auto'>
         <Link className='flex items-center gap-x-2' href='/'>
           <Logo className='w-7 h-7' />
@@ -50,7 +50,7 @@ export function Nav({ user, session }: Props) {
                 key={item.href}
               >
                 <Link
-                  className='flex items-center h-full px-5 font-medium group-data-[selected]:font-semibold text-zinc-600 group-data-[selected]:text-black dark:text-zinc-300 dark:group-data-[selected]:text-white hover:opacity-80'
+                  className='flex items-center h-full px-5 font-medium group-data-[selected]:font-semibold text-gray-11 group-data-[selected]:text-black dark:text-graydark-11 dark:group-data-[selected]:text-white hover:opacity-80'
                   href={item.href}
                 >
                   {item.label}
@@ -64,10 +64,10 @@ export function Nav({ user, session }: Props) {
         {(!user || !session) && (
           <button
             type='button'
-            className='flex items-center gap-x-2 ml-auto px-3 py-2 bg-zinc-50 dark:bg-zinc-900 font-semibold text-zinc-700 dark:text-zinc-200 border border-zinc-100 dark:border-zinc-800 rounded-full'
+            className='flex items-center gap-x-2 ml-auto px-3.5 py-2 bg-gray-subtle font-medium text-gray-12 dark:text-graydark-12 border border-gray-4 dark:border-graydark-4 rounded-full'
             onClick={() => login(location.href)}
           >
-            <GoogleIcon className='w-5 h-5' />
+            <GoogleIcon className='w-[18px] h-[18px]' />
             <span className='flex-shrink-0'>로그인</span>
           </button>
         )}

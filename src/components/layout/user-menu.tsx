@@ -19,8 +19,8 @@ export function UserMenu({ user, session }: Props) {
             <img
               src={user.image}
               className={cn(
-                'w-[38px] h-[38px] border border-zinc-50 dark:border-zinc-900 rounded-full',
-                open && 'ring-2 ring-blue-200 dark:ring-blue-800',
+                'w-[38px] h-[38px] border border-gray-3 dark:border-graydark-3 rounded-full',
+                open && 'ring-2 ring-blue-5 dark:ring-bluedark-5',
               )}
               alt={user.name}
             />
@@ -36,7 +36,7 @@ export function UserMenu({ user, session }: Props) {
         leaveFrom='transform opacity-100 scale-100'
         leaveTo='transform opacity-0 scale-95'
       >
-        <Menu.Items className='absolute right-0 mt-1 w-36 bg-white dark:bg-zinc-950 border border-zinc-100 dark:border-zinc-800 divide-y divide-zinc-100 dark:divide-zinc-800 rounded-xl shadow-lg origin-top-right focus:outline-none'>
+        <Menu.Items className='absolute right-0 mt-1 w-36 bg-gray-app border border-gray-3 dark:border-graydark-3 divide-y divide-gray-3 dark:divide-graydark-3 rounded-xl shadow-lg origin-top-right focus:outline-none'>
           <div className='p-1'>
             <Menu.Item>
               {({ active }) => (
@@ -44,9 +44,9 @@ export function UserMenu({ user, session }: Props) {
                   href='/'
                   className={`${
                     active
-                      ? 'bg-zinc-50 dark:bg-zinc-900 border-zinc-100 dark:border-zinc-800'
+                      ? 'bg-gray-subtle border-gray-4 dark:border-graydark-4'
                       : 'border-transparent'
-                  } flex items-center w-full px-2.5 py-2 font-medium text-zinc-800 dark:text-zinc-100 text-[15px] border rounded-[10px]`}
+                  } flex items-center w-full px-2.5 py-2 font-medium text-gray-12 dark:text-graydark-12 text-[15px] border rounded-[10px]`}
                 >
                   프로필
                 </Link>
@@ -58,9 +58,9 @@ export function UserMenu({ user, session }: Props) {
                   href='/'
                   className={`${
                     active
-                      ? 'bg-zinc-50 dark:bg-zinc-900 border-zinc-100 dark:border-zinc-800'
+                      ? 'bg-gray-subtle border-gray-4 dark:border-graydark-4'
                       : 'border-transparent'
-                  } flex items-center w-full px-2.5 py-2 font-medium text-zinc-800 dark:text-zinc-100 text-[15px] border rounded-[10px]`}
+                  } flex items-center w-full px-2.5 py-2 font-medium text-gray-12 dark:text-graydark-12 text-[15px] border rounded-[10px]`}
                 >
                   설정
                 </Link>
@@ -74,9 +74,9 @@ export function UserMenu({ user, session }: Props) {
                   type='button'
                   className={`${
                     active
-                      ? 'bg-zinc-50 dark:bg-zinc-900 border-zinc-100 dark:border-zinc-800'
+                      ? 'bg-gray-subtle border-gray-4 dark:border-graydark-4'
                       : 'border-transparent'
-                  } flex items-center w-full px-2.5 py-2 font-medium text-zinc-800 dark:text-zinc-100 text-[15px] border rounded-[10px]`}
+                  } flex items-center w-full px-2.5 py-2 font-medium text-gray-12 dark:text-graydark-12 text-[15px] border rounded-[10px]`}
                   onClick={() => logout(session)}
                 >
                   로그아웃
